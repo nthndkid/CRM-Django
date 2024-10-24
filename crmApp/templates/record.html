@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Records {% endblock title %} </title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <h1>Client Records</h1> <br>
+        <div class="card">
+            <div class="card-header text-bd">
+                <strong>Client ID : </strong> {{ customer_record.id }}
+            </div>
+            <div class="card-body px-3">
+              <h4 class="card-title fw-bold">{{ customer_record.first_name }} {{ customer_record.last_name }}</h4>
+              <p class="card-text px-2">
+                <strong>Email: </strong> {{ customer_record.email }} <br>
+                <strong>Phone Number: </strong> {{ customer_record.phone }} <br>
+                <strong>Address: </strong> {{ customer_record.address }} <br>
+                <strong>City: </strong> {{ customer_record.city }} <br>
+                <strong>State: </strong> {{ customer_record.state }} <br>
+                <strong>Registered Date: </strong> {{ customer_record.created_at }} <br>
+            </p>
+              <a href="{% url 'update_record' customer_record.id %}" class="btn btn-primary">Update</a>
+              <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+          <a href="{% url 'home' %}" class="btn btn-secondary mt-4">Go Back</a>
+    </div>
+    
+    {% endblock content %}
+</body>
+</html>
